@@ -1,0 +1,9 @@
+sequenceDiagram
+    Users->>UserController: Send request (Add User)-- REsponse(true) RegisterUser(UserInfo)
+    UserController->>UserService: Call service method--bool RegisterUser(UserInfo)
+    UserService->>UserRepository-IUSerREposiotry: Call repository method--bool AddUser(User)
+    UserRepository->>DbContext: Add entity--bool AddUser(User)
+    DbContext-->>UserRepository: SaveChanges completed
+    UserRepository-->>UserService: Action completed
+    UserService-->>UserController: Action completed
+    UserController-->>Users: Return response (Success/Failure)
